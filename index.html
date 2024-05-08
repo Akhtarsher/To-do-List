@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        button {
+            margin-left: 20px;
+            background-color: gray;
+            color: black;
+            border: 1px solid black;
+            border-radius: 15px;
+            padding: 10px 20px;
+            font-size: 15px;
+        }
+       
+        #myDiv{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgb(114 128 136);
+            width: 50%;
+            margin:auto;
+            margin-top:100px;
+            border: 1px solid  black;
+            border-radius: 20px;
+            
+            
+        }
+        .input-group{
+            display: flex;
+            flex-direction: row;
+
+        }
+        input{
+            background-color: black;
+            color: white;
+            font-size: 20px;
+            width: 100px;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding:0px 50px;
+            width: 200px;
+            height: 35px;
+        }
+        .para{
+        font-size: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="myDiv">
+        <h1 class="heading">To do List</h1>
+       
+       <div class="input-group">
+        <input type="text" id="input" placeholder="Enter the text">
+        <button class="btn" onclick="addTask()" id="button">Add list</button>
+       </div>
+        <ul id="list"></ul>
+
+    </div>
+</body>
+<script>
+    function addTask() {
+       
+
+        // Create a var to save all the input values
+        let inputValue = document.getElementById("input").value
+        let button= document.getElementById("button")
+
+      
+        // Create an element P and store it in a var li
+        let li = document.createElement("P")
+
+        // Set the textContent of the element from input value
+        li.textContent = inputValue;
+        li.classList.add('para')
+
+        
+       
+        
+        // Create a delete button to delete the element
+        let deleteButton = document.createElement("button")
+        deleteButton.textContent = "Delete"
+        deleteButton.onclick = function () {
+            
+            li.remove();
+        }
+        li.append(deleteButton)
+        let main = document.getElementById("myDiv")
+        main.append(li)
+        
+        // clear input field
+      button.addEventListener('click',()=>{
+        input.value=""
+      })
+
+    }
+</script>
+
+</html>
